@@ -11,9 +11,10 @@ URL:		http://synce.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
 BuildRequires:	libtool
+BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	synce-libsynce-devel >= 0.9.0
 Requires:	synce-libsynce >= 0.9.0
-ExcludeArch:	alpha amd64 ppc64 s390x sparc64
+ExcludeArch:	%{x8664} alpha ia64 ppc64 s390x sparc64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
