@@ -2,11 +2,12 @@ Summary:	SynCE RAPI library
 Summary(pl):	Biblioteka SynCE RAPI
 Name:		synce-librapi2
 Version:	0.9.2
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
 # Source0-md5:	12c3ffeb435de5ff67ac5069e18f5a01
+Patch0:		%{name}-64bit.patch
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
@@ -53,6 +54,7 @@ Statyczna biblioteka RAPI.
 
 %prep
 %setup -q -n librapi-%{version}
+%patch0 -p1
 
 %build
 %{__libtoolize}
