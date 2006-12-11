@@ -1,0 +1,32 @@
+--- librapi-0.9.2/src/rapi.c~	2006-12-12 00:04:52.000000000 +0200
++++ librapi-0.9.2/src/rapi.c	2006-12-12 00:04:54.000000000 +0200
+@@ -46,7 +46,11 @@
+         &_CeFindFirstDatabase,            /* CeFindFirstDatabase */
+         &_CeFindNextDatabase,             /* CeFindNextDatabase */
+         &_CeOpenDatabase,                 /* CeOpenDatabase */
++#if SIZEOF_VOID_P == 4
+         &_CeReadRecordProps,              /* CeReadRecordProps */
++#else
++		NULL,
++#endif /* SIZEOF_VOID_P == 4 */
+         &_CeSeekDatabase,                 /* CeSeekDatabase */
+         &_CeWriteRecordProps,             /* CeWriteRecordProps */
+         &_CeDeleteRecord,                 /* CeDeleteRecord */
+--- librapi-0.9.2/src/rapi/rapi_api.h~	2006-12-12 00:06:10.000000000 +0200
++++ librapi-0.9.2/src/rapi/rapi_api.h	2006-12-12 00:06:11.000000000 +0200
+@@ -140,6 +140,7 @@
+         DWORD dwFlags,
+         HWND hwndNotify);
+ 
++#if SIZEOF_VOID_P == 4
+ CEOID _CeReadRecordProps(
+         HANDLE hDbase,
+         DWORD dwFlags,
+@@ -147,6 +148,7 @@
+         CEPROPID *rgPropID,
+         LPBYTE *lplpBuffer,
+         LPDWORD lpcbBuffer);
++#endif /* SIZEOF_VOID_P == 4 */
+ 
+ CEOID _CeSeekDatabase(
+         HANDLE hDatabase,
