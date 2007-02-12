@@ -1,5 +1,5 @@
 Summary:	SynCE RAPI library
-Summary(pl.UTF-8):   Biblioteka SynCE RAPI
+Summary(pl.UTF-8):	Biblioteka SynCE RAPI
 Name:		synce-librapi2
 Version:	0.9.2
 Release:	2
@@ -29,7 +29,7 @@ wykonywanie zdalnych odwołań do komputera Pocket PC.
 
 %package devel
 Summary:	Header files for RAPI library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki RAPI
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki RAPI
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	synce-libsynce-devel >= 0.9.0
@@ -42,7 +42,7 @@ Pliki nagłówkowe biblioteki RAPI.
 
 %package static
 Summary:	Static RAPI library
-Summary(pl.UTF-8):   Statyczna biblioteka RAPI
+Summary(pl.UTF-8):	Statyczna biblioteka RAPI
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
