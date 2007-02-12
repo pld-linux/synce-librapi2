@@ -1,5 +1,5 @@
 Summary:	SynCE RAPI library
-Summary(pl):	Biblioteka SynCE RAPI
+Summary(pl.UTF-8):   Biblioteka SynCE RAPI
 Name:		synce-librapi2
 Version:	0.9.2
 Release:	2
@@ -22,14 +22,14 @@ The RAPI library is an open source implementation that works like
 RAPI.DLL, available on Microsoft operating systems. The library makes
 it possible to make remote calls to a computer running Pocket PC.
 
-%description -l pl
-Biblioteka RAPI to otwarta implementacja dzia≥aj±ca tak jak RAPI.DLL
-dostÍpna w systemach operacyjnych Microsoftu. Biblioteka umoøliwia
-wykonywanie zdalnych odwo≥aÒ do komputera Pocket PC.
+%description -l pl.UTF-8
+Biblioteka RAPI to otwarta implementacja dzia≈ÇajƒÖca tak jak RAPI.DLL
+dostƒôpna w systemach operacyjnych Microsoftu. Biblioteka umo≈ºliwia
+wykonywanie zdalnych odwo≈Ça≈Ñ do komputera Pocket PC.
 
 %package devel
 Summary:	Header files for RAPI library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki RAPI
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki RAPI
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	synce-libsynce-devel >= 0.9.0
@@ -37,19 +37,19 @@ Requires:	synce-libsynce-devel >= 0.9.0
 %description devel
 Header files for RAPI library.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe biblioteki RAPI.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki RAPI.
 
 %package static
 Summary:	Static RAPI library
-Summary(pl):	Statyczna biblioteka RAPI
+Summary(pl.UTF-8):   Statyczna biblioteka RAPI
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description static
 Static RAPI library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka RAPI.
 
 %prep
