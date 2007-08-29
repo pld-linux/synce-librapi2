@@ -1,0 +1,104 @@
+diff -Naur synce-librapi2-0.9.1/src/file_access.c modified/synce-librapi2-0.9.1/src/file_access.c
+--- synce-librapi2-0.9.1/src/file_access.c	2005-01-01 16:22:47.000000000 +0100
++++ modified/synce-librapi2-0.9.1/src/file_access.c	2006-01-26 14:04:43.000000000 +0100
+@@ -4,6 +4,54 @@
+ #include "rapi_buffer.h"
+ #include "rapi_context.h"
+ 
++BOOL CeSetEndOfFile(
++		  HANDLE hObject)
++{
++	RapiContext* context = rapi_context_current();
++	BOOL return_value = 0;
++	
++	/*synce_trace("begin");*/
++	
++	rapi_context_begin_command(context,0x16);
++	rapi_buffer_write_uint32(context->send_buffer, hObject);
++
++	if ( !rapi_context_call(context) )
++		return false;
++
++	rapi_buffer_read_uint32(context->recv_buffer, &context->last_error);
++	rapi_buffer_read_uint32(context->recv_buffer, &return_value);
++
++	return return_value;
++}
++
++DWORD CeSetFilePointer(
++		       HANDLE hObject,
++		       LONG lDistanceToMove,
++		       LONG *lpDistanceToMoveHigh,
++		       DWORD dwMoveMethod)
++{
++	RapiContext* context = rapi_context_current();
++	BOOL return_value = 0;
++	
++	/*synce_trace("begin");*/
++	
++	rapi_context_begin_command(context, 0x15);
++	rapi_buffer_write_uint32(context->send_buffer, hObject);
++	rapi_buffer_write_uint32(context->send_buffer, lDistanceToMove);
++	rapi_buffer_write_uint32(context->send_buffer, lpDistanceToMoveHigh);
++	rapi_buffer_write_uint32(context->send_buffer, dwMoveMethod);
++
++	if ( !rapi_context_call(context) )
++		return false;
++
++	rapi_buffer_read_uint32(context->recv_buffer, &context->last_error);
++	rapi_buffer_read_uint32(context->recv_buffer, &return_value);
++
++	return return_value;
++
++}
++
++
+ 
+ BOOL CeCloseHandle( 
+ 		HANDLE hObject)
+diff -Naur synce-librapi2-0.9.1/src/rapi.h modified/synce-librapi2-0.9.1/src/rapi.h
+--- synce-librapi2-0.9.1/src/rapi.h	2005-01-14 22:49:18.000000000 +0100
++++ modified/synce-librapi2-0.9.1/src/rapi.h	2006-01-26 14:04:53.000000000 +0100
+@@ -144,6 +144,11 @@
+ #define FILE_ATTRIBUTE_6          0x00040000
+ #define FILE_ATTRIBUTE_7          0x00080000
+ 
++/* dwMoveMethod */
++#define FILE_BEGIN   0
++#define FILE_CURRENT 1
++#define FILE_END     2
++
+ #ifndef SWIG
+ 
+ BOOL CeCloseHandle( 
+@@ -278,6 +283,16 @@
+ 		LPCWSTR lpFileName,
+ 		DWORD dwFileAttributes);
+ 
++DWORD CeSetFilePointer(
++		HANDLE hObject,
++		LONG lDistanceToMove,
++		LONG *lpDistanceToMoveHigh,
++		DWORD dwMoveMethod);
++
++BOOL CeSetEndOfFile(
++		HANDLE hObject);
++
++
+ #endif /* SWIG */
+ 
+ 
+diff -Naur synce-librapi2-0.9.1/src/README.rapi modified/synce-librapi2-0.9.1/src/README.rapi
+--- synce-librapi2-0.9.1/src/README.rapi	2005-01-01 16:25:59.000000000 +0100
++++ modified/synce-librapi2-0.9.1/src/README.rapi	2006-01-26 14:04:35.000000000 +0100
+@@ -26,8 +26,8 @@
+ [i] 12 CeDeleteRecord		
+ [i] 13 CeSeekDatabase		
+ [i] 14 CeSetDatabaseInfo	
+-[ ] 15 CeSetFilePointer	
+-[ ] 16 CeSetEndOfFile		
++[i] 15 CeSetFilePointer	
++[i] 16 CeSetEndOfFile		
+ [i] 17 CeCreateDirectory	
+ [i] 18 CeRemoveDirectory	
+ [i] 19 CeCreateProcess		
