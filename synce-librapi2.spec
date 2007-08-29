@@ -1,20 +1,22 @@
+# TODO
+# - python bindings
 Summary:	SynCE RAPI library
 Summary(pl.UTF-8):	Biblioteka SynCE RAPI
 Name:		synce-librapi2
-Version:	0.9.2
-Release:	2
+Version:	0.10.0
+Release:	0.1
 License:	MIT
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
-# Source0-md5:	12c3ffeb435de5ff67ac5069e18f5a01
-Patch0:		%{name}-64bit.patch
+# Source0-md5:	321632a4319690f1bffc9d1a5f7e4f00
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
 BuildRequires:	libtool
+BuildRequires:	python-Pyrex
 BuildRequires:	rpmbuild(macros) >= 1.213
-BuildRequires:	synce-libsynce-devel >= 0.9.0
-Requires:	synce-libsynce >= 0.9.0
+BuildRequires:	synce-libsynce-devel >= %{version}
+%requires_eq_to synce-libsynce synce-libsynce-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,7 +34,7 @@ Summary:	Header files for RAPI library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki RAPI
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	synce-libsynce-devel >= 0.9.0
+%requires_eq	synce-libsynce-devel
 
 %description devel
 Header files for RAPI library.
@@ -53,8 +55,7 @@ Static RAPI library.
 Statyczna biblioteka RAPI.
 
 %prep
-%setup -q -n librapi-%{version}
-%patch0 -p1
+%setup -q -n librapi2-%{version}
 
 %build
 %{__libtoolize}
@@ -80,7 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE README* TODO
+%doc README* TODO
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/librapi.so.*.*.*
 %{_mandir}/man1/*.1*
@@ -90,7 +91,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/librapi.so
 %{_libdir}/librapi.la
 %{_includedir}/rapi.h
-%{_aclocaldir}/librapi2.m4
+%{_pkgconfigdir}/librapi2.pc
+#%{py_sitedir}/pyrapi2.a
+#%{py_sitedir}/pyrapi2.la
+#%{py_sitedir}/pyrapi2.so
 
 %files static
 %defattr(644,root,root,755)
