@@ -11,6 +11,8 @@ Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
 # Source0-md5:	321632a4319690f1bffc9d1a5f7e4f00
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
+# for FUR: http://www.infis.univ.trieste.it/~riccardo/
+Patch0:		synce-librapi.patch
 BuildRequires:	automake >= 1.4
 BuildRequires:	libtool
 BuildRequires:	python-Pyrex
@@ -56,6 +58,7 @@ Statyczna biblioteka RAPI.
 
 %prep
 %setup -q -n librapi2-%{version}
+#%patch0 -p1
 
 %build
 %{__libtoolize}
