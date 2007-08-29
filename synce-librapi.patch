@@ -1,6 +1,5 @@
-diff -Naur synce-librapi2-0.9.1/src/file_access.c modified/synce-librapi2-0.9.1/src/file_access.c
---- synce-librapi2-0.9.1/src/file_access.c	2005-01-01 16:22:47.000000000 +0100
-+++ modified/synce-librapi2-0.9.1/src/file_access.c	2006-01-26 14:04:43.000000000 +0100
+--- synce-librapi2-0.9.1/src/rapi/file_access.c	2005-01-01 16:22:47.000000000 +0100
++++ modified/synce-librapi2-0.9.1/src/rapi/file_access.c	2006-01-26 14:04:43.000000000 +0100
 @@ -4,6 +4,54 @@
  #include "rapi_buffer.h"
  #include "rapi_context.h"
@@ -56,7 +55,6 @@ diff -Naur synce-librapi2-0.9.1/src/file_access.c modified/synce-librapi2-0.9.1/
  
  BOOL CeCloseHandle( 
  		HANDLE hObject)
-diff -Naur synce-librapi2-0.9.1/src/rapi.h modified/synce-librapi2-0.9.1/src/rapi.h
 --- synce-librapi2-0.9.1/src/rapi.h	2005-01-14 22:49:18.000000000 +0100
 +++ modified/synce-librapi2-0.9.1/src/rapi.h	2006-01-26 14:04:53.000000000 +0100
 @@ -144,6 +144,11 @@
@@ -88,17 +86,3 @@ diff -Naur synce-librapi2-0.9.1/src/rapi.h modified/synce-librapi2-0.9.1/src/rap
  #endif /* SWIG */
  
  
-diff -Naur synce-librapi2-0.9.1/src/README.rapi modified/synce-librapi2-0.9.1/src/README.rapi
---- synce-librapi2-0.9.1/src/README.rapi	2005-01-01 16:25:59.000000000 +0100
-+++ modified/synce-librapi2-0.9.1/src/README.rapi	2006-01-26 14:04:35.000000000 +0100
-@@ -26,8 +26,8 @@
- [i] 12 CeDeleteRecord		
- [i] 13 CeSeekDatabase		
- [i] 14 CeSetDatabaseInfo	
--[ ] 15 CeSetFilePointer	
--[ ] 16 CeSetEndOfFile		
-+[i] 15 CeSetFilePointer	
-+[i] 16 CeSetEndOfFile		
- [i] 17 CeCreateDirectory	
- [i] 18 CeRemoveDirectory	
- [i] 19 CeCreateProcess		
