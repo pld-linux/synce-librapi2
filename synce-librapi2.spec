@@ -1,10 +1,8 @@
-# TODO
-# - python bindings
 Summary:	SynCE RAPI library
 Summary(pl.UTF-8):	Biblioteka SynCE RAPI
 Name:		synce-librapi2
 Version:	0.10.0
-Release:	0.1
+Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
@@ -67,7 +65,6 @@ Statyczna biblioteka RAPI.
 %{__autoheader}
 %{__automake}
 %configure
-
 %{__make}
 
 %install
@@ -75,6 +72,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f $RPM_BUILD_ROOT%{py_sitedir}/pyrapi2.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -87,6 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README* TODO
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/librapi.so.*.*.*
+%{py_sitedir}/pyrapi2.so
 %{_mandir}/man1/*.1*
 
 %files devel
@@ -95,10 +95,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/librapi.la
 %{_includedir}/rapi.h
 %{_pkgconfigdir}/librapi2.pc
-#%{py_sitedir}/pyrapi2.a
-#%{py_sitedir}/pyrapi2.la
-#%{py_sitedir}/pyrapi2.so
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/librapi.a
+%{py_sitedir}/pyrapi2.a
