@@ -7,10 +7,10 @@ License:	MIT
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
 # Source0-md5:	321632a4319690f1bffc9d1a5f7e4f00
-URL:		http://www.synce.org/
-BuildRequires:	autoconf >= 2.50
 # for FUR: http://www.infis.univ.trieste.it/~riccardo/
 Patch0:		synce-librapi.patch
+URL:		http://www.synce.org/
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
 BuildRequires:	libtool
 BuildRequires:	python-Pyrex
@@ -73,7 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{py_sitedir}/pyrapi2.la
+rm -f $RPM_BUILD_ROOT%{py_sitedir}/pyrapi2.{la,a}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -99,4 +99,3 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/librapi.a
-%{py_sitedir}/pyrapi2.a
