@@ -14,6 +14,7 @@ BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
 BuildRequires:	libtool
 BuildRequires:	python-Pyrex
+BuildRequires:	python-devel
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	synce-libsynce-devel >= %{version}
 %requires_eq_to synce-libsynce synce-libsynce-devel
@@ -54,6 +55,19 @@ Static RAPI library.
 %description static -l pl.UTF-8
 Statyczna biblioteka RAPI.
 
+%package -n python-pyrapi2
+Summary:	Python bindinding for RAPI library
+Summary(pl.UTF-8):	Wiązanie Pythona do biblioteki RAPI
+Group:		Libraries/Python
+Requires:	%{name} = %{version}-%{release}
+%pyrequires_eq	python-libs
+
+%description -n python-pyrapi2
+Python bindinding for RAPI library.
+
+%description -n python-pyrapi2 -l pl.UTF-8
+Wiązanie Pythona do biblioteki RAPI.
+
 %prep
 %setup -q -n librapi2-%{version}
 #%patch0 -p1
@@ -86,7 +100,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc README* TODO
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/librapi.so.*.*.*
-%{py_sitedir}/pyrapi2.so
 %{_mandir}/man1/*.1*
 
 %files devel
@@ -99,3 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/librapi.a
+
+%files -n python-pyrapi2
+%defattr(644,root,root,755)
+%{py_sitedir}/pyrapi2.so
