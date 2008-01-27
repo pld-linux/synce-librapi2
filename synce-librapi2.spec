@@ -1,14 +1,14 @@
 Summary:	SynCE RAPI library
 Summary(pl.UTF-8):	Biblioteka SynCE RAPI
 Name:		synce-librapi2
-Version:	0.10.0
-Release:	2
+Version:	0.11
+Release:	1
 License:	MIT
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
-# Source0-md5:	321632a4319690f1bffc9d1a5f7e4f00
+Source0:	http://dl.sourceforge.net/synce/librapi2-%{version}.tar.gz
+# Source0-md5:	f955452fe30e92d7af35309bc50f23ac
 # for FUR: http://www.infis.univ.trieste.it/~riccardo/
-Patch0:		synce-librapi.patch
+#Patch0:		synce-librapi.patch
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
@@ -87,7 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{py_sitedir}/pyrapi2.{la,a}
+rm $RPM_BUILD_ROOT%{py_sitedir}/pyrapi2.{la,a}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -98,8 +98,24 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README* TODO
-%attr(755,root,root) %{_bindir}/*
+%{_bindir}/pcp
+%{_bindir}/pkillall
+%{_bindir}/pls
+%{_bindir}/pmkdir
+%{_bindir}/pmv
+%{_bindir}/prm
+%{_bindir}/prmdir
+%{_bindir}/prun
+%{_bindir}/psettime
+%{_bindir}/pshortcut
+%{_bindir}/pstatus
+%{_bindir}/rapiconfig
+%{_bindir}/synce-install-cab
+%{_bindir}/synce-list-programs
+%{_bindir}/synce-registry
+%{_bindir}/synce-remove-program
 %attr(755,root,root) %{_libdir}/librapi.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/librapi.so.2
 %{_mandir}/man1/*.1*
 
 %files devel
@@ -108,6 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/librapi.la
 %{_includedir}/rapi.h
 %{_pkgconfigdir}/librapi2.pc
+%{_mandir}/man3/*
 
 %files static
 %defattr(644,root,root,755)
