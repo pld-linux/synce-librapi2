@@ -98,22 +98,22 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README* TODO
-%{_bindir}/pcp
-%{_bindir}/pkillall
-%{_bindir}/pls
-%{_bindir}/pmkdir
-%{_bindir}/pmv
-%{_bindir}/prm
-%{_bindir}/prmdir
-%{_bindir}/prun
-%{_bindir}/psettime
-%{_bindir}/pshortcut
-%{_bindir}/pstatus
-%{_bindir}/rapiconfig
-%{_bindir}/synce-install-cab
-%{_bindir}/synce-list-programs
-%{_bindir}/synce-registry
-%{_bindir}/synce-remove-program
+%attr(755,root,root) %{_bindir}/pcp
+%attr(755,root,root) %{_bindir}/pkillall
+%attr(755,root,root) %{_bindir}/pls
+%attr(755,root,root) %{_bindir}/pmkdir
+%attr(755,root,root) %{_bindir}/pmv
+%attr(755,root,root) %{_bindir}/prm
+%attr(755,root,root) %{_bindir}/prmdir
+%attr(755,root,root) %{_bindir}/prun
+%attr(755,root,root) %{_bindir}/psettime
+%attr(755,root,root) %{_bindir}/pshortcut
+%attr(755,root,root) %{_bindir}/pstatus
+%attr(755,root,root) %{_bindir}/rapiconfig
+%attr(755,root,root) %{_bindir}/synce-install-cab
+%attr(755,root,root) %{_bindir}/synce-list-programs
+%attr(755,root,root) %{_bindir}/synce-registry
+%attr(755,root,root) %{_bindir}/synce-remove-program
 %attr(755,root,root) %{_libdir}/librapi.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/librapi.so.2
 %{_mandir}/man1/*.1*
