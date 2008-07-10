@@ -7,8 +7,6 @@ License:	MIT
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/synce/librapi2-%{version}.tar.gz
 # Source0-md5:	577f3a0e338c6a0e664ff40d9c3c8411
-# for FUR: http://www.infis.univ.trieste.it/~riccardo/
-#Patch0:		synce-librapi.patch
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
