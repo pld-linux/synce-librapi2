@@ -15,7 +15,7 @@ BuildRequires:	python-Pyrex
 BuildRequires:	python-devel
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	synce-libsynce-devel >= %{version}
-%requires_eq_to synce-libsynce
+%requires_eq_to synce-libsynce synce-libsynce-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
