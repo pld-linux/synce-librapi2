@@ -1,12 +1,12 @@
 Summary:	SynCE RAPI library
 Summary(pl.UTF-8):	Biblioteka SynCE RAPI
 Name:		synce-librapi2
-Version:	0.11.1
-Release:	2
+Version:	0.12
+Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/synce/librapi2-%{version}.tar.gz
-# Source0-md5:	577f3a0e338c6a0e664ff40d9c3c8411
+# Source0-md5:	80aa988bb37e40066abf204c6a8d6f7a
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
@@ -15,7 +15,7 @@ BuildRequires:	python-Pyrex
 BuildRequires:	python-devel
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	synce-libsynce-devel >= %{version}
-%requires_eq_to synce-libsynce synce-libsynce-devel
+%requires_eq_to synce-libsynce
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -68,7 +68,6 @@ Wiązanie Pythona do biblioteki RAPI.
 
 %prep
 %setup -q -n librapi2-%{version}
-#%patch0 -p1
 
 %build
 %{__libtoolize}
