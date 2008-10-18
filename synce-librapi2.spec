@@ -1,3 +1,9 @@
+# TODO:
+#	rm libstdc++-devel dependency - required only for tests programs
+#
+# Conditional build:
+%bcond_without	python	# build without python bindings
+#
 Summary:	SynCE RAPI library
 Summary(pl.UTF-8):	Biblioteka SynCE RAPI
 Name:		synce-librapi2
@@ -11,8 +17,11 @@ URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
 BuildRequires:	libtool
+BuildRequires:	libstdc++-devel
+%if %{with python}
 BuildRequires:	python-Pyrex
 BuildRequires:	python-devel
+%endif
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	synce-libsynce-devel >= %{version}
 %requires_eq_to synce-libsynce synce-libsynce-devel
@@ -84,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm $RPM_BUILD_ROOT%{py_sitedir}/pyrapi2.{la,a}
+rm -f $RPM_BUILD_ROOT%{py_sitedir}/pyrapi2.{la,a}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -94,7 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README* TODO
+%doc BUGS ChangeLog README* TODO
 %attr(755,root,root) %{_bindir}/pcp
 %attr(755,root,root) %{_bindir}/pkillall
 %attr(755,root,root) %{_bindir}/pls
@@ -127,6 +136,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/librapi.a
 
+%if %{with python}
 %files -n python-pyrapi2
 %defattr(644,root,root,755)
 %{py_sitedir}/pyrapi2.so
+%endif
