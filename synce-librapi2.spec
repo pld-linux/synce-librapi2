@@ -7,12 +7,12 @@
 Summary:	SynCE RAPI library
 Summary(pl.UTF-8):	Biblioteka SynCE RAPI
 Name:		synce-librapi2
-Version:	0.12
-Release:	4
+Version:	0.15
+Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/synce/librapi2-%{version}.tar.gz
-# Source0-md5:	80aa988bb37e40066abf204c6a8d6f7a
+# Source0-md5:	7341571d6f6b583bb4837bae42fb5d1c
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
@@ -116,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/pshortcut
 %attr(755,root,root) %{_bindir}/pstatus
 %attr(755,root,root) %{_bindir}/rapiconfig
+%attr(755,root,root) %{_bindir}/synce-database
 %attr(755,root,root) %{_bindir}/synce-install-cab
 %attr(755,root,root) %{_bindir}/synce-list-programs
 %attr(755,root,root) %{_bindir}/synce-registry
@@ -128,7 +129,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/librapi.so
 %{_libdir}/librapi.la
+%{_includedir}/irapistream.h
 %{_includedir}/rapi.h
+%{_includedir}/rapi2.h
+%{_includedir}/rapitypes.h
+%{_includedir}/rapitypes2.h
 %{_pkgconfigdir}/librapi2.pc
 %{_mandir}/man3/*
 
