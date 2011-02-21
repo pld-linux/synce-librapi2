@@ -3,27 +3,27 @@
 #
 # Conditional build:
 %bcond_without	python	# build without python bindings
-#
+
 Summary:	SynCE RAPI library
 Summary(pl.UTF-8):	Biblioteka SynCE RAPI
 Name:		synce-librapi2
-Version:	0.15
-Release:	2
+Version:	0.15.2
+Release:	1
 License:	MIT
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/synce/librapi2-%{version}.tar.gz
-# Source0-md5:	7341571d6f6b583bb4837bae42fb5d1c
+Source0:	http://downloads.sourceforge.net/synce/librapi2-%{version}.tar.gz
+# Source0-md5:	0a15bc22ee02794ca4714799611b4746
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
-BuildRequires:	libtool
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
 %if %{with python}
 BuildRequires:	python-Pyrex
 BuildRequires:	python-devel
 %endif
 BuildRequires:	rpmbuild(macros) >= 1.213
-BuildRequires:	synce-libsynce-devel >= %{version}
+BuildRequires:	synce-libsynce-devel >= 0.15
 %requires_eq_to synce-libsynce synce-libsynce-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
