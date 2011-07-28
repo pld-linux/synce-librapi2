@@ -8,7 +8,7 @@ Summary:	SynCE RAPI library
 Summary(pl.UTF-8):	Biblioteka SynCE RAPI
 Name:		synce-librapi2
 Version:	0.15.2
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/synce/librapi2-%{version}.tar.gz
