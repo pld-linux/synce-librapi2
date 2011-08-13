@@ -2,13 +2,23 @@
 #	rm libstdc++-devel dependency - required only for tests programs
 #
 # Conditional build:
+%bcond_without	dbus	# build without dbus support
 %bcond_without	python	# build without python bindings
+%bcond_with		hal 	# build without HAL support
+%bcond_without	udev	# build without UDEV support
+%bcond_without  odccm   # build without odccm support
+
+%if %{without dbus}
+%undefine	with_odccm
+%undefine	with_hal
+%undefine	with_udev
+%endif
 
 Summary:	SynCE RAPI library
 Summary(pl.UTF-8):	Biblioteka SynCE RAPI
 Name:		synce-librapi2
 Version:	0.15.2
-Release:	3
+Release:	4
 License:	MIT
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/synce/librapi2-%{version}.tar.gz
@@ -16,12 +26,20 @@ Source0:	http://downloads.sourceforge.net/synce/librapi2-%{version}.tar.gz
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
+%{?with_dbus:BuildRequires:	dbus-glib-devel >= 0.60}
+BuildRequires:	gettext-devel
+%{?with_hal:BuildRequires:	hal-devel}
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.559
+%{?with_udev:BuildRequires:	udev-devel}
 %if %{with python}
 BuildRequires:	python-Pyrex
 BuildRequires:	python-devel
+BuildRequires:	rpm-pythonprov
+# maybe temporaryliy, see https://bugs.launchpad.net/pld-linux/+bug/800148
+BuildRequires:	python-modules
 %endif
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	synce-libsynce-devel >= 0.15
@@ -85,7 +103,12 @@ Wiązanie Pythona do biblioteki RAPI.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	%{!?with_hal:--disable-hal-support}%{?with_hal:--enable-hal-support} \
+	%{!?with_odccm:--disable-odccm-support}%{?with_odccm:--enable-odccm-support} \
+	%{!?with_udev:--disable-udev-support}%{?with_udev:--enable-udev-support} \
+	%{!?with_python:--disable-python-bindings}%{?with_python:--enable-python-bindings}
+
 %{__make}
 
 %install
