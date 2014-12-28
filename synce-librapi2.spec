@@ -27,7 +27,7 @@ URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
 %{?with_dbus:BuildRequires:	dbus-glib-devel >= 0.60}
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 %{?with_hal:BuildRequires:	hal-devel}
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
