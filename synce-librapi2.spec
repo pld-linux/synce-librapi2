@@ -1,3 +1,4 @@
+# NOTE: for versions >= 0.16 see synce-core.spec
 # TODO:
 #	rm libstdc++-devel dependency - required only for tests programs
 #
